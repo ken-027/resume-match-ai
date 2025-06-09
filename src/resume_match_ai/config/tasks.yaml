@@ -1,7 +1,6 @@
 resume_analysis_task:
   description: >
-    Analyze the uploaded resume to extract key details such as full name, contact information,
-    work experience, education, technical and soft skills, certifications, and other relevant highlights.
+    Analyze the pdf link of user resume and extract relevant details such as full name, contact information, work experience, education, technical and soft skills, certifications, and other relevant highlights.
   expected_output: >
     A structured summary (as a list or key-value pairs) of the extracted information from the resume.
     Ensure all key sections are represented with relevant data.
@@ -10,15 +9,21 @@ resume_analysis_task:
 
 job_scraping_task:
   description: >
-    Based on the extracted resume data, identify 5–10 job listings that best match the candidate's profile.
-    For demo purposes, use mocked job descriptions with realistic titles, companies, and required skills.
+    Based on the extracted resume data, generate 5–10 realistic mock job listings that align with
+    the candidate’s skills, experience, and career path. Each listing should appear as though it came
+    from a specific job board or platform, such as LinkedIn, Indeed, or Stack Overflow Jobs.
+    The goal is to simulate how a candidate might view relevant job opportunities online. Ensure that
+    job titles, company names, skills, and descriptions are appropriate to the candidate’s level and domain.
   expected_output: >
-    A list of job postings, each including:
-    - Job title
-    - Company name
-    - Required skills
-    - Short job description
-    - Mock location and salary info
+    A list of 5–10 job postings, each including:
+    - Job Title
+    - Company Name
+    - Required Skills (3–8 relevant skills)
+    - Short Job Description (2–4 sentences)
+    - Mock Location (City, Country or Remote)
+    - Mock Salary Range (e.g., "$80,000 – $110,000 USD/year")
+    - Source Job Site (e.g., "LinkedIn", "Indeed", "Glassdoor", "Stack Overflow", etc.)
+    Ensure each job appears to come from a plausible source and reflects realistic formatting and content.
   agent: job_scraper
   output_file: output/job_scraping_report.md
 

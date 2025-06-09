@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import sys
 import warnings
-from pypdf import PdfReader
 import os
 import requests
 from resume_match_ai.exceptions import RateLimitError, RequestError
@@ -12,34 +11,18 @@ from resume_match_ai.crew import ResumeMatchAi
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-# This main file is intended to be a way for you to run your
-# crew locally, so refrain from adding unnecessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
 
 ratelimit_api = os.getenv("RATELIMIT_API")
 request_token = os.getenv("RATELIMIT_PASS_TK")
-
-def extract_resume():
-    reader = PdfReader("./software-developer.pdf")
-    resume = ""
-    for page in reader.pages:
-        text = page.extract_text()
-        if text:
-            resume += text
-
-    return resume
 
 
 def run():
     """
     Run the crew.
     """
-    resume = extract_resume()
 
     inputs = {
-        'resume': resume
+        'resume': "https://portfolio-api.ksoftdev.site/resume/software-developer.pdf"
     }
 
     try:
@@ -74,7 +57,7 @@ def test():
     resume = extract_resume()
 
     inputs = {
-        'resume': resume
+        'resume': "https://portfolio-api.ksoftdev.site/resume/software-developer.pdf"
     }
 
     try:
