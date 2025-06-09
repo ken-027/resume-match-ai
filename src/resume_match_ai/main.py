@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 
 ratelimit_api = os.getenv("RATELIMIT_API")
-request_token = os.getenv("REQUEST_RATELIMIT_TOKEN")
+request_token = os.getenv("RL_REQUEST_TOKEN")
 
 def extract_resume():
     reader = PdfReader("./software-developer.pdf")
