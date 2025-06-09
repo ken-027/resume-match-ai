@@ -1,6 +1,6 @@
 resume_analysis_task:
   description: >
-    Analyze the pdf link of user resume and extract relevant details such as full name, contact information, work experience, education, technical and soft skills, certifications, and other relevant highlights.
+    Analyze the downloaded resume to extract key details such as full name, contact information, work experience, education, technical and soft skills, certifications, and other relevant highlights.
   expected_output: >
     A structured summary (as a list or key-value pairs) of the extracted information from the resume.
     Ensure all key sections are represented with relevant data.

@@ -2,11 +2,9 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
-from crewai_tools import FileReadTool, PDFSearchTool
-
+from resume_match_ai.tools.custom_tool import download_resume, extract_resume
 
 # file_reader = FileReadTool()
-pdf_searcher = PDFSearchTool()
 
 @CrewBase
 class ResumeMatchAi():
@@ -20,7 +18,7 @@ class ResumeMatchAi():
         return Agent(
             config=self.agents_config['resume_analyst'], # type: ignore[index]
             verbose=True,
-            tools=[pdf_searcher]
+            tools=[download_resume, extract_resume]
         )
 
     @agent
@@ -28,7 +26,7 @@ class ResumeMatchAi():
         return Agent(
             config=self.agents_config['job_scraper'], # type: ignore[index]
             verbose=True,
-            tools=[pdf_searcher]
+            tools=[extract_resume]
         )
 
     @agent
@@ -36,7 +34,7 @@ class ResumeMatchAi():
         return Agent(
             config=self.agents_config['matchmaker'], # type: ignore[index]
             verbose=True,
-            tools=[pdf_searcher]
+            tools=[extract_resume]
         )
 
     @agent
@@ -44,7 +42,7 @@ class ResumeMatchAi():
         return Agent(
             config=self.agents_config['advisor'], # type: ignore[index]
             verbose=True,
-            tools=[pdf_searcher]
+            tools=[extract_resume]
         )
 
 
